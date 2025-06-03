@@ -53,5 +53,7 @@ async def predict(image: UploadFile = File(...)):
 
     return {"prediction": class_names[predicted_class]}
 
+port = int(os.environ.get("PORT", 10000))
+
 if __name__ == "__main__":
     uvicorn.run("app.server:app", host="0.0.0.0", port=10000)
