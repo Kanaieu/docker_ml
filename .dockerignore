@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+.venv/
+*.log
+test_image.jpeg
+client.py
+readme.rst
