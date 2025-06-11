@@ -11,11 +11,11 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 COPY ./requirements.txt /code/requirements.txt
-
 RUN pip install --no-cache-dir -r /code/requirements.txt
 
 COPY /app /code/app
+COPY ./start.sh /code/start.sh
+RUN chmod +x /code/start.sh
 
 EXPOSE 8000
-
-CMD ["python", "app/server.py"]
+CMD ["/code/start.sh"]
