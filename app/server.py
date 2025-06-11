@@ -1,6 +1,3 @@
-import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
-
 from tensorflow.keras.models import load_model
 from fastapi import FastAPI, File, UploadFile
 from PIL import Image
@@ -9,26 +6,14 @@ import numpy as np
 import uvicorn
 import os
 import gdown
-import requests
 
-MODEL_PATH = "/tmp/model.h5"
-# MODEL_ID = "122jY7lLEOVhuV7t13wr7egqtf71wE_ZM"
-# MODEL_URL = f"https://drive.google.com/uc?id={MODEL_ID}"
-MODEL_URL = "https://huggingface.co/Kanaie/Skin-Disease-Classification/resolve/main/model.h5"
-
-# if not os.path.exists(MODEL_PATH):
-#     print("Downloading model from Google Drive...")
-#     gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
+MODEL_PATH = "app/model.h5"
+MODEL_ID = "1V1oPdLurrjk4so6PU8AE2DVuKpSZggQw"
+MODEL_URL = f"https://drive.google.com/uc?id={MODEL_ID}"
 
 if not os.path.exists(MODEL_PATH):
-    print("Downloading model from Hugging Face...")
-    response = requests.get(MODEL_URL, stream=True)
-    response.raise_for_status()  # agar error jika gagal download
-    os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
-    with open(MODEL_PATH, "wb") as f:
-        for chunk in response.iter_content(chunk_size=8192):
-            f.write(chunk)
-    print("Model downloaded.")
+    print("Downloading model from Google Drive...")
+    gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
 
 model = load_model(MODEL_PATH)
 

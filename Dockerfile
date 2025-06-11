@@ -11,9 +11,11 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 COPY ./requirements.txt /code/requirements.txt
+
 RUN pip install --no-cache-dir -r /code/requirements.txt
 
 COPY /app /code/app
 
-EXPOSE 10000
-CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "10000"]
+EXPOSE 8000
+
+CMD ["sh", "-c", "uvicorn app.server:app --host 0.0.0.0 --port $PORT"]

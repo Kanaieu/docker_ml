@@ -1,4 +1,4 @@
-tensorflow-cpu==2.18.0
+tensorflow==2.18.0
 scikit-learn
 numpy
 pandas
@@ -8,4 +8,3 @@ fastapi
 uvicorn
 python-multipart
 gdown
-requests
