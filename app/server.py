@@ -11,12 +11,23 @@ import os
 import gdown
 
 MODEL_PATH = "app/model.h5"
-MODEL_ID = "122jY7lLEOVhuV7t13wr7egqtf71wE_ZM"
-MODEL_URL = f"https://drive.google.com/uc?id={MODEL_ID}"
+# MODEL_ID = "122jY7lLEOVhuV7t13wr7egqtf71wE_ZM"
+# MODEL_URL = f"https://drive.google.com/uc?id={MODEL_ID}"
+MODEL_URL = "https://huggingface.co/Kanaie/Skin-Disease-Classification/blob/main/model.h5"
+
+# if not os.path.exists(MODEL_PATH):
+#     print("Downloading model from Google Drive...")
+#     gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
 
 if not os.path.exists(MODEL_PATH):
-    print("Downloading model from Google Drive...")
-    gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
+    print("Downloading model from Hugging Face...")
+    response = requests.get(MODEL_URL, stream=True)
+    response.raise_for_status()  # agar error jika gagal download
+    os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
+    with open(MODEL_PATH, "wb") as f:
+        for chunk in response.iter_content(chunk_size=8192):
+            f.write(chunk)
+    print("Model downloaded.")
 
 model = load_model(MODEL_PATH)
 
