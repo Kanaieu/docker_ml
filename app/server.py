@@ -1,3 +1,6 @@
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+
 from tensorflow.keras.models import load_model
 from fastapi import FastAPI, File, UploadFile
 from PIL import Image
