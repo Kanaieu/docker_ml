@@ -9,6 +9,7 @@ import numpy as np
 import uvicorn
 import os
 import gdown
+import requests
 
 MODEL_PATH = "app/model.h5"
 # MODEL_ID = "122jY7lLEOVhuV7t13wr7egqtf71wE_ZM"
