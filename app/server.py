@@ -11,7 +11,7 @@ import os
 import gdown
 import requests
 
-MODEL_PATH = "app/model.h5"
+MODEL_PATH = "/tmp/model.h5"
 # MODEL_ID = "122jY7lLEOVhuV7t13wr7egqtf71wE_ZM"
 # MODEL_URL = f"https://drive.google.com/uc?id={MODEL_ID}"
 MODEL_URL = "https://huggingface.co/Kanaie/Skin-Disease-Classification/resolve/main/model.h5"
