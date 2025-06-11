@@ -14,8 +14,6 @@ COPY ./requirements.txt /code/requirements.txt
 RUN pip install --no-cache-dir -r /code/requirements.txt
 
 COPY /app /code/app
-COPY ./start.sh /code/start.sh
-RUN chmod +x /code/start.sh
 
-EXPOSE 8000
-CMD ["/code/start.sh"]
+EXPOSE 10000
+CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "10000"]
