@@ -8,7 +8,7 @@ import os
 import gdown
 
 MODEL_PATH = "app/model.h5"
-MODEL_ID = "1V1oPdLurrjk4so6PU8AE2DVuKpSZggQw"
+MODEL_ID = "122jY7lLEOVhuV7t13wr7egqtf71wE_ZM"
 MODEL_URL = f"https://drive.google.com/uc?id={MODEL_ID}"
 
 if not os.path.exists(MODEL_PATH):
