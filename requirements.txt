@@ -2,6 +2,7 @@ tensorflow==2.18.0
 scikit-learn
 numpy
 pandas
+opencv-python
 pillow
 fastapi
 uvicorn
